@@ -1,5 +1,8 @@
 import os
 import shutil
+import sys
+sys.path.append("./.")
+from skripts.parameters import get_ignore_file_names
 
 def read_all_files(directory: str) -> list:
     """
@@ -49,3 +52,28 @@ def copy_files(source_files: list, source_dir: str, target_dir: str) -> None:
             print(f"Copied: {source_path} to {target_path}")
         else:
             print(f"File not found: {source_path}")
+
+
+def read_all_folders_to_be_ignored(directory: str) -> list:
+    """
+    This function searches in the given folder for a .txt file, with one of the possible names:
+    'ignore_folders.txt', 'ignore_folders_list.txt', 'ignore_folders.txt', "ignorieren.txt", and more.
+    It reads the file and returns a list of folder names to be ignored.
+    If no such file is found, it returns an empty list.
+    Args:
+        directory (str): The path to the directory to read.
+    Returns:
+        list: A list of folder names relative to the specified directory that should be ignored.
+    """
+    list_of_folders = []
+
+    ignore_file = get_ignore_file_names()
+
+    for file_name in ignore_file:
+        ignore_file_path = os.path.join(directory, file_name)
+        if os.path.exists(ignore_file_path):
+            with open(ignore_file_path, 'r', encoding='utf-8') as file:
+                list_of_folders = [line.strip() for line in file if line.strip()]
+            break
+    
+    return list_of_folders
