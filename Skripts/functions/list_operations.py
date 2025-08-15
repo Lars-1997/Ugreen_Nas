@@ -1,9 +1,10 @@
 import sys
+
 sys.path.append("./.")
 from skripts.parameters import get_ignore_file_names
 
 
-def remove_folders (list: list) -> list:
+def remove_folders(list: list) -> list:
     """
     Removes folder paths from a list of file paths and returns only file names.
     Args:
@@ -14,12 +15,12 @@ def remove_folders (list: list) -> list:
     file_names = []
     for file in list:
         file_name = file.split("\\")[-1]
-        file_names = [] if 'file_names' not in locals() else file_names
+        file_names = [] if "file_names" not in locals() else file_names
         file_names.append(file_name)
     return file_names
 
 
-def remove_existing_files(list_to_remove: list, list_to_check:list) -> list:
+def remove_existing_files(list_to_remove: list, list_to_check: list) -> list:
     """
     Removes files from list_to_remove that are present in list_to_check.
     Args:
@@ -30,7 +31,10 @@ def remove_existing_files(list_to_remove: list, list_to_check:list) -> list:
     """
     return [file for file in list_to_remove if file not in list_to_check]
 
-def remove_existing_files_from_list_with_folders(list_to_remove: list, list_with_movable_files: list) -> list:
+
+def remove_existing_files_from_list_with_folders(
+    list_to_remove: list, list_with_movable_files: list
+) -> list:
     """
     Removes files from list_to_remove that are not present in list_with_movable_files, considering full paths.
     Args:
@@ -39,9 +43,16 @@ def remove_existing_files_from_list_with_folders(list_to_remove: list, list_with
     Returns:
         list: A list of file paths from list_to_remove that do not have corresponding file names in list_with_movable_files.
     """
-    return [file for file in list_to_remove if file.split("\\")[-1] in list_with_movable_files]
+    return [
+        file
+        for file in list_to_remove
+        if file.split("\\")[-1] in list_with_movable_files
+    ]
 
-def remove_unwanted_folders_from_list(list_to_remove_from: list, list_of_folders_to_remove: list) -> list:
+
+def remove_unwanted_folders_from_list(
+    list_to_remove_from: list, list_of_folders_to_remove: list
+) -> list:
     """
     Removes folders from list_to_remove_from that are present in list_of_folders_to_remove.
     Args:

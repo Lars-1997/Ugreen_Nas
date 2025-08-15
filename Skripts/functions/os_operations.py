@@ -1,8 +1,10 @@
 import os
 import shutil
 import sys
+
 sys.path.append("./.")
 from skripts.parameters import get_ignore_file_names
+
 
 def read_all_files(directory: str) -> list:
     """
@@ -19,8 +21,9 @@ def read_all_files(directory: str) -> list:
         for filename in files:
             filepath = os.path.join(root, filename)
             list_of_files.append(os.path.relpath(filepath, directory))
-    
+
     return list_of_files
+
 
 def copy_files(source_files: list, source_dir: str, target_dir: str) -> None:
     """
@@ -43,10 +46,10 @@ def copy_files(source_files: list, source_dir: str, target_dir: str) -> None:
     for file in source_files:
         source_path = os.path.join(source_dir, file)
         target_path = os.path.join(target_dir, file)
-        
+
         # Ensure the target directory exists
         os.makedirs(os.path.dirname(target_path), exist_ok=True)
-        
+
         if os.path.exists(source_path):
             shutil.copy2(source_path, target_path)
             print(f"Copied: {source_path} to {target_path}")
@@ -72,8 +75,8 @@ def read_all_folders_to_be_ignored(directory: str) -> list:
     for file_name in ignore_file:
         ignore_file_path = os.path.join(directory, file_name)
         if os.path.exists(ignore_file_path):
-            with open(ignore_file_path, 'r', encoding='utf-8') as file:
+            with open(ignore_file_path, "r", encoding="utf-8") as file:
                 list_of_folders = [line.strip() for line in file if line.strip()]
             break
-    
+
     return list_of_folders
