@@ -3,7 +3,7 @@ In dieser Schritt fuer Schritt Anleitung wird beschrieben, wie dieses Skript auf
 Skript in zum Ugreen Docker bringen
 - Die .tar Datei aus diesem Repository auf dem Nas speichern
 - In der Ugreen Docker Anwendung auf Image und dann auf Lokal wechseln:
-![image](images\Open_Images_Ugreen_Docker.JPG)
+![image](images/Open_Images_Ugreen_Docker.JPG)
 - Im Menue Image hinzufuegen die Option: "von NAS" waehlen und im Explorer die .tar Datei suchen.
 
 Portainer installieren
@@ -26,7 +26,7 @@ Portainer oeffnen
 - Mit dem *Get Startet* Knopf mit dem NAS verbinden.
 - Das NAS dann als Environment auswaehlen.
 - In Portainer fuer das NAS drei neue Volumen erstellen
-!(images\Create_Volumen.JPG)
+![image](images/Create_Volumen.JPG)
     1. Das Verzeichnis auf dem die ersten Bilder liegen, meist:
         - Name: *Person1_Volumen*
         - Use CIFS
@@ -49,7 +49,7 @@ Portainer oeffnen
         - Username: *Admin User kann verwendet werden*
         - Password: *Admin User kann verwendet werden*
 - Container Starten
-!(images\Create_Container.JPG)
+![image](images/Create_Container.JPG)
     - Auf dem Tab Container einen neuen erstellen
     - Name: *Wunsch Name vergeben*
     - Image: *Name des Images suchen, wie es in der Docker App steht*
