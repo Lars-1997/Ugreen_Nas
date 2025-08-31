@@ -13,7 +13,6 @@ target = "/app/skripts/image_folders/images_target"
 
 while True:
     now = datetime.datetime.now()
-
     if now.hour == 12 and now.minute == 0:
         ##############################################################
         ###       Read all files from the specified directory      ###
@@ -79,5 +78,7 @@ while True:
 
         # Check Results
         files_3 = read_all_files(target)
+
+        time.sleep(60)
     else:
         time.sleep(60)

@@ -1,6 +1,6 @@
 # Use the official Python image as the base image
 # This image includes Python 3.12 and pip pre-installed
-FROM python:3.12
+FROM python:3.12-alpine
 
 # Set the working directory in the container
 WORKDIR /app
@@ -9,5 +9,5 @@ WORKDIR /app
 COPY ./skripts ./skripts
 
 #command to run the script
-CMD [ "python", "./skripts/main.py" ]
+CMD [ "python", "-u", "./skripts/main.py" ]
 
