@@ -1,12 +1,14 @@
-In dieser Schritt fuer Schritt Anleitung wird beschrieben, wie dieses Skript auf einem Ugreen_Nas zu starten ist:
+# Anleitung
 
-Skript in zum Ugreen Docker bringen
+### In dieser Schritt fuer Schritt Anleitung wird beschrieben, wie dieses Skript auf einem Ugreen_Nas zu starten ist:
+
+__Skript in zum Ugreen Docker bringen__
 - Die .tar Datei aus diesem Repository auf dem Nas speichern
 - In der Ugreen Docker Anwendung auf Image und dann auf Lokal wechseln:
 ![image](images/Open_Images_Ugreen_Docker.JPG)
 - Im Menue Image hinzufuegen die Option: "von NAS" waehlen und im Explorer die .tar Datei suchen.
 
-Portainer installieren
+__Portainer installieren__
 - Im NAS unter Systemeinstellungen den Punkt Terminal oeffnen
 - In diesem Punkt die SSH Verbindung aktivieren, dabei passen die Einstellungen
 - Nun ueber ein Terminal mit dem Ugreen NAS verbinden durch
@@ -20,7 +22,7 @@ Portainer installieren
 - Portainer installieren:
     - sudo docker run -d -p *Wunsch_Port*:9443 --name *Wunsch_Conatiner_Name* --restart *Wunsch_Einstellung* -v /var/run/docker.sock:/var/run/docker.sock -v *Den Namen des eben erstellten Volumens*:/data portainer-ce:lts
 
-Portainer oeffnen
+__Portainer oeffnen__
 - Ueber die IP_Adresse mit dem *Wunsch_Port* auf Portainer Verbinden.
 - Bei einen Admin Account erstellen.
 - Mit dem *Get Startet* Knopf mit dem NAS verbinden.
@@ -48,7 +50,8 @@ Portainer oeffnen
         - Share: */Weiterer_Pfad_zu_den_Bildern*
         - Username: *Admin User kann verwendet werden*
         - Password: *Admin User kann verwendet werden*
-- Container Starten
+
+__Container Starten__
 ![image](images/Create_Container.JPG)
     - Auf dem Tab Container einen neuen erstellen
     - Name: *Wunsch Name vergeben*
