@@ -3,7 +3,7 @@ In dieser Schritt fuer Schritt Anleitung wird beschrieben, wie dieses Skript auf
 Skript in zum Ugreen Docker bringen
 - Die .tar Datei aus diesem Repository auf dem Nas speichern
 - In der Ugreen Docker Anwendung auf Image und dann auf Lokal wechseln:
-!(images\Open_Images_Ugreen_Docker.JPG)
+![image](images\Open_Images_Ugreen_Docker.JPG)
 - Im Menue Image hinzufuegen die Option: "von NAS" waehlen und im Explorer die .tar Datei suchen.
 
 Portainer installieren
