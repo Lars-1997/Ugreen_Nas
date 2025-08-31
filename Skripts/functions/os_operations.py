@@ -52,7 +52,7 @@ def copy_files(source_files: list, source_dir: str, target_dir: str) -> None:
 
         if os.path.exists(source_path):
             shutil.copy2(source_path, target_path)
-            print(f"Copied: {source_path} to {target_path}")
+            # print(f"Copied: {source_path} to {target_path}")
         else:
             print(f"File not found: {source_path}")
 
