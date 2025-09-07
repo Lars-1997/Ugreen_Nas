@@ -6,7 +6,7 @@ FROM python:3.12-alpine
 WORKDIR /app
 
 # Copy the requirements file into the container at /app
-COPY ./skripts ./skripts
+COPY ./Skripts ./skripts
 
 #command to run the script
 CMD [ "python", "-u", "./skripts/main.py" ]

@@ -80,5 +80,8 @@ while True:
         files_3 = read_all_files(target)
 
         time.sleep(60)
+    elif now.minute % 15 == 0:
+        print(f"Service Check: It is {now}")
+        time.sleep(60-now.second)
     else:
         time.sleep(60)
