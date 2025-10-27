@@ -28,3 +28,6 @@ Possible Improvements:
 - Python File
   - Add the option to ignore specific folders for sensitive images :white_check_mark:
   - Make that lists one and two are compared to list three simultaneously (Not sure how big the impact is)
+- Iphone pictures in heic format post a problem for the normal user
+  - Create a skript to change all .heic pictures to .jpeg
+    - Alter folder structure for visual barrier 
