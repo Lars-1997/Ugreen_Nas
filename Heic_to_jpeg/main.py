@@ -5,6 +5,11 @@ import os
 from PIL import Image
 from pillow_heif import register_heif_opener
 
+######################################################
+###               Set Variables                    ###
+######################################################
+delete_files = os.environ["DELETE_HEIC_FILES"]
+
 
 ######################################################
 ###               Create Functions                 ###
@@ -58,9 +63,11 @@ def remove_unwanted_heic_files_from_directory(source_directory):
 ######################################################
 ###                 Start Skript                   ###
 ######################################################
-source = "/app/skripts/image_folders/images_source"
+source = "/app/images_source"
 heic_files = create_list_of_heic_files(source)
 for file in heic_files:
     convert_heic_to_jpeg(file, source)
-# remove_unwanted_heic_files_from_directory(source)
+
+if delete_files.lower() == "true":
+    remove_unwanted_heic_files_from_directory(source)
 print(os.listdir(source))

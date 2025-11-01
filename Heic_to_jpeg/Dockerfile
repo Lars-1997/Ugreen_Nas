@@ -5,7 +5,10 @@ FROM python:3.12-alpine
 # Install Pillow using pip
 RUN pip install pillow pillow-heif
 # Set the working directory in the container
-WORKDIR /app
+#WORKDIR .
+
+# Copy the current directory contents
+COPY . .
 
 #command to run the script
-CMD [ "python", "-u", "./main.py" ]
+CMD [ "python", "-u", "main.py" ]
