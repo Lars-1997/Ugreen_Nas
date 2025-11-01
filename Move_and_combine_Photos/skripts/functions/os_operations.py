@@ -47,12 +47,16 @@ def copy_files(source_files: list, source_dir: str, target_dir: str) -> None:
         source_path = os.path.join(source_dir, file)
         target_path = os.path.join(target_dir, file)
 
+        
         # Ensure the target directory exists
-        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        if not os.path.exists(os.path.dirname(target_path)):
+            os.makedirs(os.path.dirname(target_path), exist_ok=True)
+            print(f"Following Directory created: {os.path.dirname(target_path)}")
+        #os.makedirs(os.path.dirname(target_path), exist_ok=True)
 
         if os.path.exists(source_path):
             shutil.copy2(source_path, target_path)
-            # print(f"Copied: {source_path} to {target_path}")
+            print(f"Copied: {source_path} to {target_path}")
         else:
             print(f"File not found: {source_path}")
 

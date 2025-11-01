@@ -13,7 +13,7 @@ target = "/app/skripts/image_folders/images_target"
 
 while True:
     now = datetime.datetime.now()
-    if now.hour == 12 and now.minute == 0:
+    if now.hour == 10 and now.minute == 0:
         ##############################################################
         ###       Read all files from the specified directory      ###
         ##############################################################
@@ -80,5 +80,8 @@ while True:
         files_3 = read_all_files(target)
 
         time.sleep(60)
+    elif now.minute % 15 == 0:
+        print(f"Service Check: It is {now}")
+        time.sleep(60-now.second)
     else:
         time.sleep(60)
