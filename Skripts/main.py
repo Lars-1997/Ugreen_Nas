@@ -13,7 +13,7 @@ target = "/app/skripts/image_folders/images_target"
 
 while True:
     now = datetime.datetime.now()
-    if now.hour == 12 and now.minute == 0:
+    if now.hour == 10 and now.minute == 0:
         ##############################################################
         ###       Read all files from the specified directory      ###
         ##############################################################
