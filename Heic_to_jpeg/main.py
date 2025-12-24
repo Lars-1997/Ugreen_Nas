@@ -42,7 +42,8 @@ def convert_heic_to_jpeg(heic_file_path, output_directory):
     register_heif_opener()
     image = Image.open(heic_file_path)
     jpeg_file_name = os.path.splitext(os.path.basename(heic_file_path))[0] + ".jpeg"
-    jpeg_file_path = os.path.join(output_directory, jpeg_file_name)
+    original_file_path = os.path.dirname(heic_file_path)
+    jpeg_file_path = os.path.join(original_file_path, jpeg_file_name)
     image.convert("RGB").save(jpeg_file_path, "JPEG")
     return jpeg_file_path
 
@@ -67,6 +68,7 @@ source = "/app/images_source"
 heic_files = create_list_of_heic_files(source)
 for file in heic_files:
     convert_heic_to_jpeg(file, source)
+    print(f"Converted: {file} to JPEG format.")
 
 if delete_files.lower() == "true":
     remove_unwanted_heic_files_from_directory(source)
