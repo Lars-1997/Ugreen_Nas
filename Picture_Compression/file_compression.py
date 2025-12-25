@@ -8,7 +8,7 @@ from PIL import Image
 ###                 Set Variables                 ###
 #####################################################
 file_path = "/app/images_source"
-file_path = "C:/Users/larst/Pictures/Test"
+image_quality = int(os.environ["IMAGE_QUALITY"]) if "IMAGE_QUALITY" in os.environ and int(os.environ["IMAGE_QUALITY"]) <= 100 else 85
 
 #####################################################
 ###                Create Functions               ###
@@ -25,11 +25,11 @@ def create_list_of_all_images(source_directory):
     images = []
     for root, dirs, files in os.walk(source_directory):
         for file in files:
-            if file.lower().endswith(".jpg"):
+            if file.lower().endswith(".jpg") or file.lower().endswith(".jpeg"):
                 images.append(os.path.join(root, file))
     return images
 
-def compress_image(input_path, output_path, quality=85):
+def compress_image(input_path, output_path, quality):
     """
     Compresses a .jpg image to the specified quality.
     Args:
@@ -50,6 +50,6 @@ os.makedirs(destination_folder, exist_ok=True)
 for image in images_path:
     image_name = os.path.basename(image)
     output_image_path = os.path.join(destination_folder, image_name)
-    compress_image(image, output_image_path, quality=70)
+    compress_image(image, output_image_path, quality=image_quality)
 images = create_list_of_all_images(destination_folder)
 print(images)
