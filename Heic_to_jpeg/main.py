@@ -48,17 +48,21 @@ def convert_heic_to_jpeg(heic_file_path, output_directory):
     return jpeg_file_path
 
 
-def remove_unwanted_heic_files_from_directory(source_directory):
+def remove_unwanted_heic_files_from_directory(directory):
     """
     Removes unwanted .heic files from the specified source directory.
     Args:
-        source_directory (str): The path to the source directory.
-        unwanted_file_names (list): A list of unwanted .heic file names to be removed.
+        directory (str): The path to the directory to be cleaned.
     """
-    for root, dirs, files in os.walk(source_directory):
-        for file in files:
-            if file.lower().endswith(".heic"):
-                os.remove(os.path.join(root, file))
+    list_of_files = []
+
+    for root, dirs, files in os.walk(directory):
+        for filename in files:
+            filepath = os.path.join(root, filename)
+            if filepath.lower().endswith(".heic"):
+                list_of_files.append(os.path.relpath(filepath))
+                os.remove(filepath)
+    print(f"Remove the following files: {list_of_files}")
 
 
 ######################################################
@@ -71,5 +75,5 @@ for file in heic_files:
     print(f"Converted: {file} to JPEG format.")
 
 if delete_files.lower() == "true":
+    print("Removing HEIC files...")
     remove_unwanted_heic_files_from_directory(source)
-print(os.listdir(source))
