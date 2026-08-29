@@ -2,14 +2,14 @@ import os
 from extract_trade_info import extract_trade_data
 import pandas as pd
 
-file_path = r"I:\Test"
-archive_path = r"I:\Test\Archive"
+file_path = r"/app/skripts/pdf_files"
+archive_path = rf"{file_path}/Archive"
 os.makedirs(archive_path, exist_ok=True)
-error_path = r"I:\Test\Error"
+error_path = rf"{file_path}/Error"
 os.makedirs(error_path, exist_ok=True)
-destination_path = r"I:\Test\Data"
+destination_path = rf"{file_path}/Data"
 os.makedirs(destination_path, exist_ok=True)
-csv_file = destination_path + "\\" + "trade_output.csv"
+csv_file = destination_path + "/" + "trade_output.csv"
 
 # Define primary keys for duplicate check
 pk_columns = ["OrderType", "Type", "ExecutionDatetime", "ISIN"]
@@ -72,12 +72,21 @@ def transform_pdf_to_csv(file_path: str, csv_file: str) -> None:
         print("Transaction already exists in CSV. Skipping.")
 
 
-for filename in os.listdir(file_path):
-    if filename.endswith(".pdf"):
+print(f"Starting script. Looking for PDFs in: {file_path}")
+if not os.path.exists(file_path):
+    print(f"Warning: Directory {file_path} does not exist!")
+else:
+    files = os.listdir(file_path)
+    print(f"Found {len(files)} total files/directories in {file_path}")
+
+for filename in os.listdir(file_path) if os.path.exists(file_path) else []:
+    if filename.lower().endswith(".pdf"):
+        print(f"Processing file: {filename}")
         try:
             pdf_file_path = os.path.join(file_path, filename)
             transform_pdf_to_csv(pdf_file_path, csv_file)
             os.replace(pdf_file_path, os.path.join(archive_path, filename))
+            print(f"Successfully processed and archived: {filename}")
         except Exception as e:
             print(f"Error processing {filename}: {e}")
             os.replace(pdf_file_path, os.path.join(error_path, filename))
